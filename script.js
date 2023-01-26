@@ -35,7 +35,7 @@ const startGame = () => {
 const endGame = (isWin) => {
 
     if (isWin) {
-        winningMessageTextElement.innetText = isCircleTurn ? "O Venceu!" : "X Venceu!";
+        winningMessageTextElement.innerText = isCircleTurn ? "O Venceu!" : "X Venceu!";
     } else {
         winningMessageTextElement.innerText = "Empate!";
     }
