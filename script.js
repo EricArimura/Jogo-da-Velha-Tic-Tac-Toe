@@ -1,15 +1,11 @@
 const cellElements = document.querySelectorAll("[data-cell]");
 const board = document.querySelector("[data-board]");
-const winningMessageTextElement = document.querySelector(
-    "[data-winning-message-text]"
-);
+const winningMessageTextElement = document.querySelector("[data-winning-message-text]");
 const winningMessage = document.querySelector("[data-winning-message]");
 const restartButton = document.querySelector("[data-restart-button]");
 
 let isCircleTurn;
 let isDraw;
-let isWin;
-let currentPlayer;
 
 const winningCombinations = [
     [0, 1, 2],
@@ -36,14 +32,12 @@ const startGame = () => {
     winningMessage.classList.remove("show-winning-message");
 };
 
-const endGame = (isDraw) => {
+const endGame = (isWin) => {
 
-    if (isDraw) {
-        winningMessageTextElement.innerText = "Empate!";
+    if (isWin) {
+        winningMessageTextElement.innetText = isCircleTurn ? "O Venceu!" : "X Venceu!";
     } else {
-        winningMessageTextElement.innetText = isCircleTurn
-        ? "O Venceu!"
-        : "X Venceu!";
+        winningMessageTextElement.innerText = "Empate!";
     }
 
     winningMessage.classList.add("show-winning-message");
@@ -99,9 +93,9 @@ const handleClick = (e) => {
     const isDraw = checkForDraw();
 
     if (isWin) {
-        endGame(false);
-    } else if (isDraw) {
         endGame(true);
+    } else if (isDraw) {
+        endGame(false);
     } else {
         // Mudar símbolo
         swapTurns();
